@@ -7,15 +7,15 @@ set RUSTC=%CUSTOM_RUSTC%\build\x86_64-pc-windows-msvc\stage2\bin\rustc
 set RUSTDOC=%CUSTOM_RUSTC%\build\x86_64-pc-windows-msvc\stage2\bin\rustdoc
 
 set TARGET=%~dp0\target
-set TARGET_ELF=%TARGET%\xtensa-esp8266-none-elf\release
+set TARGET_ELF=%TARGET%\xtensa-esp8266-none-elf\release\examples
 set TARGET_IMAGE=%TARGET%\xtensa-esp8266-none-image\release
 
 set PORT=COM7
-set ARTIFACT_NAME=home-intercom-esp8266-broker
+set ARTIFACT_NAME=serial
 
 cd %~dp0
 
-cargo xbuild --release --features="xtensa-lx-rt/lx106 xtensa-lx/lx106 esp8266-hal"
+cargo xbuild --release --example serial
 
 mkdir %TARGET_IMAGE%
 copy /Y %TARGET_ELF%\%ARTIFACT_NAME% %TARGET_IMAGE%\%ARTIFACT_NAME%

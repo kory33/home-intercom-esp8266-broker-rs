@@ -11,11 +11,11 @@ set TARGET_ELF=%TARGET%\xtensa-esp8266-none-elf\release\examples
 set TARGET_IMAGE=%TARGET%\xtensa-esp8266-none-image\release
 
 set PORT=COM7
-set ARTIFACT_NAME=serial
+set ARTIFACT_NAME=home-intercom-esp8266-broker-rs
 
 cd %~dp0
 
-cargo xbuild --release --example serial
+cargo xbuild --release --example home-intercom-esp8266-broker-rs
 
 mkdir %TARGET_IMAGE%
 copy /Y %TARGET_ELF%\%ARTIFACT_NAME% %TARGET_IMAGE%\%ARTIFACT_NAME%
